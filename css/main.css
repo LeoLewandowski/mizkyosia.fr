@@ -1,0 +1,40 @@
+:root {
+    --light-grey: #ddd;
+    --bg-angle:45deg;
+}
+
+* {
+    margin: auto;
+    padding: auto;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(var(--bg-angle), #000000, #202020) fixed;
+}
+
+h1 {
+    font-size: 6rem;
+    color: white;
+    margin: 20px 0;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.borderGrad {
+    --border-colors:red,orange;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.borderGrad::after {
+    content: "";
+  position:relative;
+  display: block;
+  width: calc(100% + .5vw);
+  height: calc(100% + 1vw);
+  margin: -.5vw;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(var(--bg-angle), var(--border-colors));
+}

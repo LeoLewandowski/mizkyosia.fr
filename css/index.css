@@ -7,10 +7,18 @@
     justify-content: center;
 }
 
-#projects {
+.flexibleGrid {
+    --grid-size:75vw;
+    --cell-size:minmax(150px,20vw);
     display: grid;
     width: fit-content;
-    grid-template-columns: repeat(3, 25vw);
-    grid-auto-rows: 25vw;
+    max-width: var(--grid-size);
+    grid-template-columns:repeat(auto-fill, var(--cell-size));
+    grid-auto-rows: var(--cell-size);
     gap: min(4vh, 4vw);
+}
+
+.smallScreen .flexibleGrid {
+    grid-template-columns: var(--grid-size);
+    grid-auto-rows: var(--grid-size);
 }

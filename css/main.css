@@ -22,28 +22,35 @@ h1 {
 }
 
 .borderGrad {
+    margin: 0;
     cursor: pointer;
     transition: all .3s;
-    --border-colors: red, orange;
+    --border-colors: orange, red, purple, blue;
     border-radius: 10px;
     background-color: black;
 }
 
-.borderGrad:hover {
-    --bg-angle: -45deg;
-    box-shadow: 0px 0px 15px orange;
-    /* background-color: transparent; */
-}
-
 .borderGrad::after {
+    transition: all ease .4s;
     content: "";
     pointer-events: none;
     position: relative;
     display: block;
     width: calc(100% + .5vw);
     height: calc(100% + .5vw);
-    margin: -.5vw;
     z-index: -1;
+    margin: -.5vw;
     border-radius: inherit;
     background: linear-gradient(var(--bg-angle), var(--border-colors));
+    background-position: 0% 100%;
+    background-size: 200% 200%;
+}
+
+.borderGrad:hover::after {
+    background-position: 100% 0%;
+}
+
+.borderGrad::before {
+    content: attr(t);
+    font-family: 'Courier New', Courier, monospace;
 }

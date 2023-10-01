@@ -1,24 +1,15 @@
 .proj {
+    position: relative;
+    cursor: pointer;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.flexibleGrid {
-    --grid-size:75vw;
-    --cell-size:minmax(150px,20vw);
-    display: grid;
-    width: fit-content;
-    max-width: var(--grid-size);
-    grid-template-columns:repeat(auto-fill, var(--cell-size));
-    grid-auto-rows: var(--cell-size);
-    gap: min(4vh, 4vw);
-}
-
-.smallScreen .flexibleGrid {
-    grid-template-columns: var(--grid-size);
-    grid-auto-rows: var(--grid-size);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: calc(var(--cell-size) / 10);
+    color: gray;
+    vertical-align: middle;
+    text-decoration: none;
 }

@@ -1,0 +1,29 @@
+#plate {
+    --border-angle:0deg;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: min(90vh,90vw);
+    height: min(90vh,90vw);
+    gap: 5px;
+    background-image: linear-gradient(var(--border-angle), red, orange);
+    animation: anim 5s linear infinite;
+    padding: 5px;
+}
+
+.cell {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #303030;
+}
+
+.cell:nth-child(even) {
+    background-color:gray;
+}
+
+@keyframes anim {
+    from { --border-angle:0deg; }
+    to { --border-angle:359deg; }
+}

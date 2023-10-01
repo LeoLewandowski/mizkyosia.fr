@@ -5,27 +5,38 @@
 
 * {
     margin: auto;
-    padding: auto;
 }
 
 body {
+    font-family: sans-serif;
+    color: white;
     height: 100vh;
-    background: linear-gradient(var(--bg-angle), #000000, #202020) fixed;
+    background: linear-gradient(var(--bg-angle), black, #202020) fixed;
 }
 
 h1 {
-    font-size: 6rem;
-    color: white;
+    font-size: min(6rem,13vw);
     margin: 20px 0;
     text-align: center;
-    font-family: sans-serif;
+}
+
+h2 {
+    margin: 20px;
+    font-size: min(3rem, 10vw);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .borderGrad {
-    margin: 0;
-    cursor: pointer;
-    transition: all .3s;
+    --border-width: min(1.5%, 1vw);
     --border-colors: orange, red, purple, blue;
+    margin: 0;
+    transition: all 1s;
     border-radius: 10px;
     background-color: black;
 }
@@ -34,14 +45,13 @@ h1 {
     transition: all ease .4s;
     content: "";
     pointer-events: none;
-    position: relative;
-    display: block;
-    width: calc(100% + .5vw);
-    height: calc(100% + .5vw);
+    position: absolute;
+    display:block;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
     z-index: -1;
-    margin: -.5vw;
     border-radius: inherit;
-    background: linear-gradient(var(--bg-angle), var(--border-colors));
+    background: linear-gradient(45deg, var(--border-colors));
     background-position: 0% 100%;
     background-size: 200% 200%;
 }
@@ -50,7 +60,23 @@ h1 {
     background-position: 100% 0%;
 }
 
-.borderGrad::before {
-    content: attr(t);
-    font-family: 'Courier New', Courier, monospace;
+.flexibleGrid {
+    --grid-size:75vw;
+    --cell-size:max(150px,20vw);
+    --column-count:auto-fill;
+    display: grid;
+    width: fit-content;
+    max-width: var(--grid-size);
+    grid-template-columns:repeat(var(--column-count), var(--cell-size));
+    grid-auto-rows: var(--cell-size);
+    gap: max(2vh, 2vw);
+}
+
+.smallScreen .flexibleGrid {
+    --cell-size:var(--grid-size);
+}
+
+#projects {
+    align-items: center;
+    justify-content: center;
 }

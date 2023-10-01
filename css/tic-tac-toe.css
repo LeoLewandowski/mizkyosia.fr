@@ -1,14 +1,19 @@
 #plate {
+    --cell-gap:5px;
     --border-angle:0deg;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     width: min(90vh,90vw);
     height: min(90vh,90vw);
-    gap: 5px;
+    gap: var(--cell-gap);
     background-image: linear-gradient(var(--border-angle), red, orange);
     animation: anim 5s linear infinite;
-    padding: 5px;
+    padding: var(--cell-gap);
+}
+
+#plate.finished {
+    pointer-events: none;
 }
 
 .cell {
@@ -17,6 +22,20 @@
     height: 100%;
     margin: 0;
     background-color: #303030;
+}
+
+.cell:has(svg) {
+    pointer-events: none;
+}
+
+svg {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: black;
+    stroke-width: 10%;
+    stroke-linecap: round;
 }
 
 .cell:nth-child(even) {

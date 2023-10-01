@@ -13,3 +13,8 @@
     vertical-align: middle;
     text-decoration: none;
 }
+
+a[href*="tic-tac-toe"]{
+    background-image: url(../images/ttt.png);
+    background-size: cover;
+}

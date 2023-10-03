@@ -33,11 +33,14 @@ main {
 }
 
 .borderGrad {
+    --x:75%;
+    --y:50%;
     --border-width: min(1.5%, 1vw);
     --border-colors: orange, red, purple, blue;
+    --border-radius:10px;
     margin: 0;
     transition: all 1s;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     background-color: black;
 }
 
@@ -49,7 +52,7 @@ main {
     display:block;
     width: calc(100% + var(--border-width) * 2);
     height: calc(100% + var(--border-width) * 2);
-    z-index: -1;
+    z-index: -2;
     border-radius: inherit;
     background: linear-gradient(45deg, var(--border-colors));
     background-position: 0% 100%;

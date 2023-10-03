@@ -14,16 +14,22 @@ function turn(e){
     e.target.classList.add(player ? 'circle' : 'cross');
     //Checks the plate to see if a player has won. I believe this part could be heavily optimized, but I have yet to find a way to do it right
     //Diagonal checks : (no fancy stuff here, checks the only two diagonals in the plate)
-    if(plate.children[4].classList.length > 1 && (plate.children[0].classList.value == plate.children[4].classList.value && plate.children[8].classList.value == plate.children[4].classList.value || plate.children[2].classList.value == plate.children[4].classList.value && plate.children[6].classList.value == plate.children[4].classList.value)) endGame();
+    if(document.getElementById(`1,1`).classList.length > 1 && (document.getElementById(`0,0`).classList.value == document.getElementById('1,1').classList.value && document.getElementById('2,2').classList.value == document.getElementById('1,1').classList.value || plate.children[2].classList.value == document.getElementById('1,1').classList.value && plate.children[6].classList.value == document.getElementById('1,1').classList.value)) endGame();
     //Horizontal & vertical checks (iterates through all 3 columns and rows) :
     for(let i = 0; i < 3; i++){
-        if((plate.children[3*i].classList.length > 1 && plate.children[i*3 + 1].classList.value == plate.children[i*3].classList.value && plate.children[i*3 + 2].classList.value == plate.children[i*3].classList.value) || (plate.children[i].classList.length > 1 && plate.children[i + 3].classList.value == plate.children[i].classList.value && plate.children[i + 6].classList.value == plate.children[i].classList.value)) endGame();
+        console.log(i + '|' + document.getElementById(`0,${i}`).classList.value == document.getElementById(`1,${i}`).classList.value == document.getElementById(`2,${i}`).classList.value)
+        if(
+            (document.getElementById(`${i},0`).classList.length > 1 && document.getElementById(`${i},1`).classList.value == document.getElementById(`${i},0`).classList.value && document.getElementById(`${i},2`).classList.value == document.getElementById(`${i},0`).classList.value)
+            ||
+            (document.getElementById(`0,${i}`).classList.length > 1 && document.getElementById(`1,${i}`).classList.value == document.getElementById(`0,${i}`).classList.value && document.getElementById(`2,${i}`).classList.value == document.getElementById(`0,${i}`).classList.value)
+        ) return endGame();
     }
+    if(!document.querySelector('.cell:not(.circle):not(.cross)')) return endGame(true);
     //Changes the player
     player = !player;
 }
 
-function endGame(){
-    document.getElementById('winner').innerHTML = `Player ${player ? '0 (O)' : '1 (X)'} has won !`;
+function endGame(draw){
+    document.getElementById('winner').innerHTML = draw ? 'Game ended up in a draw !' : `Player ${player ? '0 (O)' : '1 (X)'} has won !`;
     plate.classList.add('finished');
 }

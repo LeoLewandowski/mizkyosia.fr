@@ -9,12 +9,37 @@
     justify-content: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: calc(var(--cell-size) / 10);
+    font-weight: bolder;
     color: gray;
     vertical-align: middle;
     text-decoration: none;
 }
 
-a[href*="tic-tac-toe"]{
-    background-image: url(../images/ttt.png);
-    background-size: cover;
+.proj[href] {
+    background-color: #1119;
+}
+
+.proj[href]::before {
+    --x: 0px;
+    --y: 0px;
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: var(--font-size);
+    font-weight: 500;
+    word-wrap: break-word;
+    opacity: 0;
+    transition: opacity 400ms;
+    -webkit-mask-image: radial-gradient(calc(100% * 0.8) circle at var(--x) var(--y),
+            rgb(255 255 255) 20%,
+            rgb(255 255 255 / 25%),
+            transparent);
+}
+
+.proj[href]:hover::before {
+    opacity: 1;
 }

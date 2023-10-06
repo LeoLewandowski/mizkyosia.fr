@@ -1,0 +1,24 @@
+#game {
+    --game-columns:7;
+    --game-rows:1;
+    aspect-ratio: 7/6;
+}
+
+#game svg .circle0 {
+    fill: red;
+    stroke: red;
+}
+
+#game svg .circle1 {
+    fill: yellow;
+    stroke: yellow;
+}
+
+#game svg :nth-last-child(1) {
+    animation: test .6s 1 ease-in;
+}
+
+@keyframes test {
+    from { transform: translateY(-110%);}
+    to { transform: translateY(0);}
+}

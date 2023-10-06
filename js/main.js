@@ -16,7 +16,7 @@ function textGen() {
 }
 
 function checkSize() {
-    if(window.screen.width <= 425) document.body.classList.add('smallScreen');
+    if (window.screen.width <= 425) document.body.classList.add('smallScreen');
     else document.body.classList.remove('smallScreen');
 }
 
@@ -28,4 +28,29 @@ function isVisible(element) {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
+}
+
+/**
+ * Rescales the given element so that it fits into the viewport
+ * @param {HTMLElement} elem 
+ */
+function rescaleElement(elem) {
+    let scale,
+        width = window.innerWidth,
+        height = window.innerHeight,
+        isMax = width >= elem.clientWidth && height >= elem.clientHeight;
+    // Calculates the scale, and applies it to the element
+    scale = .9 *  Math.min(width / elem.clientWidth, height / elem.clientHeight);
+    elem.style.transform = isMax ? '' : `scale(${scale})`;
+    // Sets the element's margin so that the distance between it and the other elements remains
+    // still even with the rescale
+    elem.style.margin = isMax ? '' : `-${(1 - scale) * 42.5}% 0%`;
+}
+
+function clamp(x,min,max) {
+    return Math.min(Math.max(min,x),max);
+}
+
+function randomBetween(min,max){
+    return Math.random() * (max - min + 1) + min;
 }

@@ -12,6 +12,7 @@ body {
     color: white;
     height: 100vh;
     background: linear-gradient(var(--bg-angle), black, #202020) fixed;
+    height: 100vh;
 }
 
 h1 {
@@ -30,6 +31,8 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
+    height: auto;
 }
 
 .borderGrad {
@@ -37,10 +40,10 @@ main {
     --y:50%;
     --border-width: min(1.5%, 1vw);
     --border-colors: orange, red, purple, blue;
-    --border-radius:10px;
     margin: 0;
+    position: relative;
     transition: all 1s;
-    border-radius: var(--border-radius);
+    border-radius: 10px;
     background-color: black;
 }
 
@@ -51,6 +54,8 @@ main {
     position: absolute;
     display:block;
     width: calc(100% + var(--border-width) * 2);
+    top: calc(0px - var(--border-width));
+    left: calc(0px - var(--border-width));
     height: calc(100% + var(--border-width) * 2);
     z-index: -2;
     border-radius: inherit;

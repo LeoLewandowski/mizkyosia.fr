@@ -1,5 +1,6 @@
 :root {
     --light-grey: #ddd;
+    --dark-grey: #202020;
     --bg-angle: 45deg;
 }
 
@@ -17,7 +18,7 @@ body {
 
 h1 {
     font-size: min(6rem,13vw);
-    margin: 20px 0;
+    margin: 50px 0 20px 0;
     text-align: center;
 }
 
@@ -26,19 +27,23 @@ h2 {
     font-size: min(3rem, 10vw);
 }
 
+h3 {
+    text-align: center;
+}
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-x: hidden;
+    overflow: hidden;
     height: auto;
 }
 
 .borderGrad {
     --x:75%;
     --y:50%;
-    --border-width: min(1.5%, 1vw);
+    --border-width: min(1vh, 1vw);
     --border-colors: orange, red, purple, blue;
     margin: 0;
     position: relative;
@@ -84,7 +89,9 @@ main {
     --cell-size:var(--grid-size);
 }
 
-#projects {
-    align-items: center;
-    justify-content: center;
+#home {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }

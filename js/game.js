@@ -17,6 +17,7 @@ function initGame() {
 
 function restartGame() {
     game.innerHTML = originalGame;
+    game.classList.remove('finished');
     document.getElementById('winner').innerHTML = '';
 }
 

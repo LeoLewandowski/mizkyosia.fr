@@ -38,6 +38,16 @@
             rgb(255 255 255) 20%,
             rgb(255 255 255 / 25%),
             transparent);
+    mask-image: radial-gradient(calc(100% * 0.8) circle at var(--x) var(--y),
+        rgb(255 255 255) 20%,
+        rgb(255 255 255 / 25%),
+        transparent);;
+}
+
+#projects {
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
 }
 
 .proj[href]:hover::before {

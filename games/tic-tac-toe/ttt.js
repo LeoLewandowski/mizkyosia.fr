@@ -5,6 +5,7 @@ function turn(e){
     //Adds the symbol to the cell : cross or circle
     e.target.innerHTML = player ? '<svg><circle r="35%" cx="50%" cy="50%"></svg>' : '<svg><line x1="15%" y1="15%" x2="85%" y2="85%"/><line x1="85%" y1="15%" x2="15%" y2="85%"/></svg>';
     e.target.classList.add(player ? 'circle' : 'cross');
+    e.target.classList.add('filled');
     //Checks the plate to see if a player has won. I believe this part could be heavily optimized, but I have yet to find a way to do it right
     //Diagonal checks : (no fancy stuff here, checks the only two diagonals in the plate)
     if(document.getElementById(`1,1`).classList.length > 1 && (document.getElementById(`0,0`).classList.value == document.getElementById('1,1').classList.value && document.getElementById('2,2').classList.value == document.getElementById('1,1').classList.value || game.children[2].classList.value == document.getElementById('1,1').classList.value && game.children[6].classList.value == document.getElementById('1,1').classList.value)) endGame();

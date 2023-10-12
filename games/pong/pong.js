@@ -13,10 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     grad.addColorStop(2/3,'purple');
     grad.addColorStop(1,'blue');
     ctx.fillStyle = grad;
+    restart();
     ctx.fillRect(0,0,ctx.canvas.width,bar.w);
     ctx.fillRect(0,ctx.canvas.height - bar.w,ctx.canvas.width,ctx.canvas.height);
-    restart();
-    drawId = setInterval(draw, 1);
 })
 
 onkeydown = onkeyup = function(e){
@@ -64,19 +63,20 @@ function restart() {
     document.getElementById('winner').innerHTML = '';
     game.classList.remove('finished');
     bar = {
-        b0: ctx.canvas.height/2 - bar.h/2,
-        b1: ctx.canvas.height/2 - bar.h/2,
         v0: 0,
         v1: 0,
         h: 200,
         w: 25,
         s: 5
     };
+    bar.b0 = ctx.canvas.height/2 - bar.h/2;
+    bar.b1 = ctx.canvas.height/2 - bar.h/2;
     ball = {
         x: ctx.canvas.width / 2,
-        y: ctx.canvas.height,
+        y: ctx.canvas.height / 2,
         r: 10,
         a: randomBetween(0, 2*Math.PI),
         s: 5
     };
+    drawId = setInterval(draw, 1);
 }

@@ -43,8 +43,8 @@ function rescaleElement(elem) {
     scale = .9 *  Math.min(width / elem.clientWidth, height / elem.clientHeight);
     elem.style.transform = isMax ? '' : `scale(${scale})`;
     // Sets the element's margin so that the distance between it and the other elements remains
-    // still even with the rescale
-    elem.style.margin = isMax ? '' : `-${(1 - scale) * 42.5}% 0%`;
+    // (mostly) the same even with the rescale
+    elem.style.margin = isMax ? '' : `-${(1 - scale) * (elem.clientHeight / elem.clientWidth)*45}% 0%`;
 }
 
 function clamp(x,min,max) {

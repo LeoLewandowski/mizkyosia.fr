@@ -15,10 +15,10 @@
 }
 
 #game svg :nth-last-child(1) {
-    animation: test .6s 1 ease-in;
+    animation: fall .6s 1 ease-in;
 }
 
-@keyframes test {
+@keyframes fall {
     from { transform: translateY(-110%);}
     to { transform: translateY(0);}
 }

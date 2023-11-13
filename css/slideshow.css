@@ -1,0 +1,143 @@
+.slideshow {
+    max-width: 60vw;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    cursor: none;
+}
+
+.slideshow::before, .slideshow::after {
+    content: '';
+    position:absolute;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    left: -15%;
+    z-index:15;
+    transition: all .15s ease-in-out;
+    background: linear-gradient(to right,black, transparent);
+}
+
+.slideshow::after {
+    left: unset;
+    right: -15%;
+    background: linear-gradient(to left,black, transparent);
+}
+
+.slideshow > .to-right, .slideshow > .to-left {
+    position: absolute;
+    top: 50%;
+}
+
+.slideshow > .img-container {
+    display: block;
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+    animation:height .4s ease-in-out;
+}
+
+.slideshow > .img-container > img {
+    position: relative;
+    max-width: 100%;
+    max-height: 90vh;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slideshow > .img-container > img:not(.current, .slided, .behind) {
+    display: none;
+}
+
+.slideshow > .img-container > img.slided {
+    position: absolute;
+    transform: translateX(-100%);
+    left:0%;
+    z-index:5;
+}
+
+.slideshow > .img-container > img.behind {
+    position: absolute;
+    z-index: -1;
+}
+
+
+.slideshow > :not(.img-container) {
+    border: none;
+    background-color: transparent;
+    z-index: 10;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+}
+
+.slideshow > .to-right, .slideshow > .fullscreen {
+    right: -42px;
+}
+
+.slideshow > .to-left {
+    left: -42px;
+}
+
+.slideshow > .fullscreen {
+    bottom: -42px;
+}
+
+.slideshow > .dot-container {
+    cursor: initial;
+    bottom: -42px;
+    width: 90%;
+    left: 5%;
+    right: 5%;
+}
+
+/* ------------------- CONTROLS SHOWN -------------- */
+
+.slideshow.show-controls {
+    cursor: initial;
+}
+
+.slideshow.show-controls > .fullscreen {
+    bottom: 10px;
+    right: 10px;
+}
+
+.slideshow.show-controls > .dot-container {
+    bottom: 10px;
+}
+
+.slideshow.show-controls > .to-right {
+    right: 5%;
+}
+
+.slideshow.show-controls > .to-left {
+    left: 5%;
+}
+
+.slideshow.show-controls::before {
+    left: 0;
+}
+
+.slideshow.show-controls::after {
+    right: 0;
+}
+
+/* ------------------ FULLSCREEN MODE ------------------ */
+
+.slideshow.no-fullscreen > .fullscreen {
+    display: none;
+}
+
+/* -------------- DEVICES WITHOUT A MOUSE -------------- */
+
+@media (hover:none) {
+    
+}

@@ -1,0 +1,49 @@
+#events > span {
+    margin: 35px 0;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#events > span::before, #events > span::after {
+    content:"";
+	position: absolute;
+    top: -20px;
+	left: 50%;
+	width: 150px;
+	height: 2px;
+	border-bottom: 2px dashed var(--jsa-light-blue);
+	margin-left: -75px;
+}
+
+#events > span::after {
+	border-bottom-style: solid;
+    width: 50px;
+    margin-left: -25px;
+}
+
+#events > span:nth-child(2n) {
+    flex-direction: row-reverse;
+}
+
+#events div:last-child {
+    font-size: xx-small;
+}
+
+#events img {
+    max-width: 20vw;
+}
+
+@media (max-width:576px) {
+    #events > span, #events > span:nth-child(2n) {
+        flex-direction: column;
+    }
+
+    #events img {
+        max-height: 25vw;
+        max-width: initial;
+    }
+}

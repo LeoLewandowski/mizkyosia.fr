@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JUNIA Space Association - Page</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/page.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+    <script type="text/javascript" src="/js/main.js"></script>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <header>
+        <a id="logo-header" href="#"><img src="/images/JSA_Logo.png"></a>
+        <button id="nav-button" onclick="hide('nav')">&#9776;</button>
+        <nav class="hidden">
+            <a href="/">Accueil</a>
+            <a href="/histoire/">Présentation</a>
+            <a href="/actualites/">Nos évènements</a>
+            <a href="/projets/">Nos projets</a>
+            <a href="/team/">Notre équipe</a>
+        </nav>
+    </header>
+    <!-- End Navigation Menu -->
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <div id="social-container">
+            <a target="_blank" href="https://www.instagram.com/juniaspaceassociation/" class="social">
+                <img src="/images/instagram.png">
+                <p>Instagram</p>
+            </a>
+            <a class="social" target="_blank" href="https://www.linkedin.com/company/junia-space-association/about/">
+                <img src="/images/linkedin.png">
+                <p>LinkedIn</p>
+            </a>
+            <a class="social" target="_blank" href="https://discord.gg/K4xZQb4jtM">
+                <img src="/images/discord.png">
+                <p>Discord</p>
+            </a>
+        </div>
+        <div>
+            <input id="theme" type="checkbox" onclick="changeTheme(this.checked)">
+            <label for="theme">Thème sombre ?</label>
+        </div>
+        <div id="credit">
+            2023 © JUNIA Space Association
+        </div>
+    </footer>
+    <!-- End Footer -->
+</body>
+</html>

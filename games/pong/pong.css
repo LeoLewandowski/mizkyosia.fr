@@ -1,9 +1,0 @@
-#game {
-    --pong-width:min(150vh, 90vw);
-    --pong-height:calc(var(--pong-width) * 6 / 10);
-    width: var(--pong-width);
-    height: var(--pong-height);
-    background-color: transparent;
-    border-radius: 0;
-    position: relative;
-}

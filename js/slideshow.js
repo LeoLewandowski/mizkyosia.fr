@@ -23,27 +23,37 @@ function setupSlideshow(el,id){
     el.querySelector('.to-right').addEventListener('click', nextSlide);
     el.querySelector('.fullscreen').addEventListener('click', fullscreenSlideshow);
     el.querySelector('.img-container img:first-child').classList.add('current');
-    el.querySelector('.img-container img:last-child').classList.add('slided');
-    el.querySelector('.img-container img:first-child + img').classList.add('behind');
+    el.querySelector('.img-container img:last-child').classList.add('slided','left');
+    el.querySelector('.img-container img:first-child + img').classList.add('slided','right');
     el.addEventListener('mousemove', () => showControls(el));
     el.addEventListener('mouseleave', () => hideControls(el));
+    let m = 0;
+    el.querySelectorAll('.img-container img').forEach(i => m = min(i.clientHeight, m));
+    el.querySelector('.img-container').style.setProperty('min-height',m + 'px');
 }
 
-var next, previous, current;
+var next, previous, current, SlideshowImages;
 
 /**
  * Shows the previous slide of a slideshow. Fires on click
  * @param {Event} e The click event
  */
 function previousSlide(e) {
-    console.log('previous', e.target.parentElement);
-    next = document.querySelector('.current');
-    current = document.querySelector('.slided');
-    previous = getSiblingIndex(document.querySelector('.slided')) - 1;
-    next.classList.remove('current'); next.classList.add('behind');
-    current.classList.remove('slided'); current.classList.add('current');
-    if(previous < 0) previous = current.parentElement.childElementCount - 1;
-    current.parentElement.children[previous].classList.add('slided');
+    SlideshowImages = e.target.parentElement.querySelector('.img-container');
+    SlideshowImages.querySelector('.slided.right').classList.remove('slided','right','anim');
+    
+    next = SlideshowImages.querySelector('.current');
+    next.classList.add('slided','right','anim');
+    next.classList.remove('current','left');
+    
+    current = SlideshowImages.querySelector('.slided.left');
+    current.classList.add('current','right','anim');
+    current.classList.remove('slided','left');
+
+    previous = getSiblingIndex(current) - 1;
+
+    if(previous < 0) previous = SlideshowImages.childElementCount - 1;
+    SlideshowImages.children[previous].classList.add('slided','left');
 }
 
 /**
@@ -51,18 +61,26 @@ function previousSlide(e) {
  * @param {Event} e The click event
  */
 function nextSlide(e) {
-    console.log('next');
-    next = document.querySelector('.current');
-    current = document.querySelector('.slided');
-    previous = getSiblingIndex(document.querySelector('.slided')) - 1;
-    next.classList.remove('current'); next.classList.add('behind');
-    current.classList.remove('slided'); current.classList.add('current');
-    if(previous < 0) previous = current.parentElement.childElementCount - 1;
-    current.parentElement.children[previous].classList.add('slided');
+    SlideshowImages = e.target.parentElement.querySelector('.img-container');
+    SlideshowImages.querySelector('.slided.left').classList.remove('slided','left','anim');
+
+    previous = SlideshowImages.querySelector('.current');
+    previous.classList.add('slided','left','anim');
+    previous.classList.remove('current','right'); 
+    
+    current = SlideshowImages.querySelector('.slided.right');
+    current.classList.add('current','left','anim');
+    current.classList.remove('slided','right'); 
+
+    next = getSiblingIndex(current) + 1;
+
+    if(next >= SlideshowImages.childElementCount) next = 0;
+    SlideshowImages.children[next].classList.add('slided','right');
 }
 
 function fullscreenSlideshow(e) {
     console.log('fullscreen')
+    e.target.parentElement.requestFullscreen();
 }
 
 /**
@@ -72,7 +90,7 @@ function fullscreenSlideshow(e) {
 function showControls(el) {
     clearTimeout(SLIDESHOW_INTERVAL_IDS[parseInt(el.getAttribute('slideshow-nb'))]);
     el.classList.add('show-controls');
-    if(!el.querySelector('.slideshow > button:hover')) SLIDESHOW_INTERVAL_IDS[parseInt(el.getAttribute('slideshow-nb'))] = setTimeout(() => hideControls(el),4000)
+    if(!el.querySelector('.slideshow > input:hover')) SLIDESHOW_INTERVAL_IDS[parseInt(el.getAttribute('slideshow-nb'))] = setTimeout(() => hideControls(el),4000)
 }
 
 /**

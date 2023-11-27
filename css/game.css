@@ -12,6 +12,10 @@
     transform: translateY(0);
 }
 
+#gameWrapper #imageSources, #gameWrapper #imageSources * {
+    display: none !important;
+}
+
 #game.finished {
     pointer-events: none;
 }
@@ -29,9 +33,17 @@
     /* position: relative; */
     gap: var(--cell-gap);
     background-image: linear-gradient(var(--border-angle), red, orange);
-    animation: anim 5s linear infinite;
+    animation: bg-spin 5s linear infinite forwards;
     padding: var(--cell-gap);
     transform-origin: center;
+}
+
+.gameCanvas {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 0;
+    position: relative;
+    background-color: #303030;
 }
 
 .gameCell {

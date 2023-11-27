@@ -1,11 +1,18 @@
+const keyMap = {};
 let game, gameWrapper, originalGame;
 //Adds an event to every cell of the game, so that clicking on them actuallly do something
 document.addEventListener('DOMContentLoaded', () => {
     game = document.getElementById('game');
+    game.addEventListener('contextmenu', e => e.preventDefault());
     window.addEventListener('resize', (e) => rescaleElement(game));
     initGame();
     rescaleElement(document.getElementById('game'));
 });
+
+onkeydown = onkeyup = function(e){
+    keyMap[e.key] = e.type == 'keydown';
+    if(e.key.match(/(w|z|s|ArrowDown|ArrowUp)/)) e.preventDefault();
+}
 
 function initGame() {
     gameWrapper = document.getElementById('gameWrapper');
@@ -19,9 +26,11 @@ function restartGame() {
     game.innerHTML = originalGame;
     game.classList.remove('finished');
     document.getElementById('winner').innerHTML = '';
+    document.querySelectorAll('.gameCell').forEach(c => c.addEventListener('click', turn));
 }
 
 function endGame(arg,p){
+    playSound('win');
     player = p||player;
     document.getElementById('winner').innerHTML = arg === true ? 'Game ended up in a draw !' : `Player ${player} (${arg}) has won !`;
     game.classList.add('finished');

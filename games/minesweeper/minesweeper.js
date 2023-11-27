@@ -21,21 +21,24 @@ function start(){
     }
     document.querySelectorAll('.gameCell').forEach(e => {
         if(e.classList.contains('mine')) setNeighborMineCount(Array.prototype.indexOf.call(game.children, e) % width, Math.floor(Array.prototype.indexOf.call(game.children, e) / width));
-        e.addEventListener('click', onClick,false);
-        e.addEventListener('auxclick', onClick,false);
+        e.addEventListener('click', onClick);
+        e.addEventListener('auxclick', onClick);
+        e.addEventListener('contextmenu', e => e.preventDefault());
     });
     return rescaleElement(game);
 }
 
 function onClick(e) {
     e.preventDefault();
+    playSound('click');
     if(e.button == 2) flagTile(e.target);
     else digTile(e.target);
     return false;
 }
 
 function end(w){
-    document.getElementById('winner').innerHTML = w ? 'You won !' : 'You lost...';
+    playSound(w ? 'win' : 'explosion');
+    document.getElementById('winner').innerHTML = w ? 'You won !' : `You lost...<br>${document.querySelectorAll('.gameCell.hidden:not(.mine)').length} safe tiles remaining`;
     game.classList.add('finished');
 }
 
@@ -68,5 +71,4 @@ function digAll(){
 function flagTile(e){
     if(e.classList.contains('flagged')) e.classList.remove('flagged');
     else e.classList.add('flagged');
-    console.log('lol');
 }

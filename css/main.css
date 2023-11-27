@@ -2,6 +2,11 @@
     --light-grey: #ddd;
     --dark-grey: #202020;
     --bg-angle: 45deg;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
 }
 
 * {
@@ -40,6 +45,13 @@ main {
     height: auto;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .borderGrad {
     --x:75%;
     --y:50%;
@@ -75,18 +87,14 @@ main {
 
 .flexibleGrid {
     --grid-size:75vw;
-    --cell-size:max(150px,20vw);
+    --cell-size:max(150px,min(20vw,300px));
     --column-count:auto-fill;
     display: grid;
     width: fit-content;
     max-width: var(--grid-size);
     grid-template-columns:repeat(var(--column-count), var(--cell-size));
     grid-auto-rows: var(--cell-size);
-    gap: max(2vh, 2vw);
-}
-
-.smallScreen .flexibleGrid {
-    --cell-size:var(--grid-size);
+    gap: max(2vh, 2vw, 20px);
 }
 
 #home {
@@ -94,4 +102,10 @@ main {
     position: absolute;
     top: 10px;
     left: 10px;
+}
+
+@media (max-width:576px) {
+    .flexibleGrid {
+        --cell-size:var(--grid-size);
+    }
 }

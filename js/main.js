@@ -1,11 +1,12 @@
+let alpha = 45, mainAudio = new Audio();
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a.proj').forEach(a => a.onmouseover = 'this.t = textGen()');
+
     checkSize();
 })
 
 window.addEventListener('resize', checkSize)
 
-let alpha = 45;
 // setInterval(() => {
 //     alpha = (alpha >= 360 ? 1 : alpha+1);
 //     document.body.style.setProperty('--bg-angle',`${alpha}deg`);
@@ -53,4 +54,8 @@ function clamp(x,min,max) {
 
 function randomBetween(min,max){
     return Math.random() * (max - min + 1) + min;
+}
+
+function playSound(src,loop){
+    new Audio(`/sounds/${src}.wav`).play();
 }

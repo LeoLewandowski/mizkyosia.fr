@@ -53,3 +53,12 @@
 .proj[href]:hover::before {
     opacity: 1;
 }
+
+@media (min-width:768px) {
+    .proj:nth-child(4n) {
+        grid-column:2 / 4;
+    }
+    .proj:nth-child(4n + 1){
+        grid-column: 1 / 3;
+    }
+}

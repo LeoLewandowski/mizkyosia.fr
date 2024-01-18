@@ -2,7 +2,7 @@ const keyMap = {};
 /**
  * @type {CanvasRenderingContext2D}
  */
-let ctx, drawId, paused;
+let ctx, drawId, paused, startTime, debugging = false;
 
 document.addEventListener('keypress', e => {
     if(e.key == ' ') pause();
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     game = document.getElementById('game');
     ctx = game.getContext('2d');
     game.addEventListener('contextmenu', e => e.preventDefault());
-    restartGame();
+    restart();
 });
 
 function restartGame(){
@@ -25,13 +25,13 @@ function restartGame(){
     game.classList.remove('finished');
     document.getElementById('winner').innerHTML = '';
     drawId = setInterval(update,1);
+    startTime = Date.now();
 }
 
-function endGame(arg,p){
+function endGame(txt){
     clearInterval(drawId);
     playSound('win');
-    player = p||player;
-    document.getElementById('winner').innerHTML = arg === true ? 'Game ended up in a draw !' : `Player ${player} (${arg}) has won !`;
+    document.getElementById('winner').innerHTML = txt;
     game.classList.add('finished');
 }
 

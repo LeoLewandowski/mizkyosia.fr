@@ -15,6 +15,7 @@
 .gameCell:not(.mine)::before {
     content: attr(mines);
     color: red;
+    font-size: 5vmin;
     font-weight: bold;
     text-align: center;
     vertical-align: middle;

@@ -52,10 +52,9 @@ function setNeighborMineCount(i,j) {
 }
 
 function digTile(e){
-    if(!e || !e.classList.contains('hidden')) return;
+    if(!e || !e.classList.contains('hidden') || e.classList.contains('flagged')) return;
     e.classList.remove('hidden');
     if(e.classList.contains('mine')) return end(false);
-    if(e.classList.contains('flagged')) e.classList.remove('flagged');
     if(!e.getAttribute('mines')) DIRS.forEach(([x,y]) => {
         let i = Array.prototype.indexOf.call(game.children, e) % width, j = Math.floor(Array.prototype.indexOf.call(game.children, e) / width);
         digTile(game.children[(j + y)*width + clamp(i + x,0,width-1)]);

@@ -2,7 +2,7 @@ const keyMap = {};
 /**
  * @type {CanvasRenderingContext2D}
  */
-let ctx, drawId, paused, startTime, debugging = false;
+let ctx, drawId, paused, startTime;
 
 document.addEventListener('keypress', e => {
     if(e.key == ' ') pause();

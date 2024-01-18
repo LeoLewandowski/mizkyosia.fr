@@ -1,4 +1,4 @@
-let alpha = 45, mainAudio = new Audio();
+let alpha = 45, mainAudio = new Audio(), debugging = false;
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a.proj').forEach(a => a.onmouseover = 'this.t = textGen()');
 

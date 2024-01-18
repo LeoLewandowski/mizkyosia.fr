@@ -1,0 +1,36 @@
+
+.gameGrid {
+    grid-template-columns: 1.5fr repeat(var(--game-columns), 1fr);
+    grid-template-rows: 1.5fr repeat(var(--game-rows), 1fr);
+    gap: 0px;
+}
+
+.gameCell {
+    border: 1px solid gray;
+    box-sizing: border-box;
+    color: black;
+    font-size: 2vmax;
+}
+
+.gameGrid .gameCell {
+    background-color: white;
+}
+.gameCell.black {
+    background-color: black;
+}
+.gameCell.instructions {
+    background-color: gainsboro;
+}
+.gameCell.crossed {
+    background-image: url(/images/cross.svg);
+    background-size: contain;
+}
+
+@keyframes blink {
+    0% {
+        background-color: white;
+    }
+    100% {
+        background-color: red;
+    }
+}

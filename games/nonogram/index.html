@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nonogram</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/game.css">
+    <link rel="stylesheet" href="./nonogram.css">
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="/js/gridGame.js" type="text/javascript"></script>
+    <script src="./nonogram.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <audio id="audio" src="/sounds/click.wav"></audio>
+    <a id="home" title="Home page" href="/"><img src="/images/home.svg"></a>
+    <main>
+        <h1>Minesweeper</h1>
+        <h3>Click to paint a tile
+            <br>
+            Right-click to mark a tile with an X
+        </h3>
+        <div id="gameParams">
+            <h3>Grid size : </h3>
+            <input id="width" class="borderGrad" type="number" min="1" max="100" value="10" placeholder="width">
+            <h3> X </h3>
+            <input id="height" class="borderGrad" type="number" min="1" max="100" value="10" placeholder="height">
+        </div>
+        <h3 id="winner"></h3>
+        <button id="restart" class="borderGrad" onclick="restart()">Restart</button>
+        <section id="gameWrapper">
+            <div id="game" class="gameGrid plateGame">
+            </div>
+        </section>
+    </main>
+</body>
+</html>

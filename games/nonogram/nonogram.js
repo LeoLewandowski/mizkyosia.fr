@@ -1,8 +1,18 @@
-const Cells = [], source = null;
+var Cells = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     restart();
 });
+
+function checkEnd() {
+    let end = true;
+    for(let i = 0; i < Cells.length; i++) {
+        for(let j = 0; j < Cells[i].length; j++) {
+            end = end && (document.getElementById(`${j + 1}-${i + 1}`).classList.contains('black') == Cells[i][j]);
+        }
+    }
+    return end;
+}
 
 function fill(e) {
     let pos = e.target.id.split('-').map(n => parseInt(n) - 1);
@@ -21,10 +31,12 @@ function fill(e) {
     else if(e.button === 0) return false;
     else if(e.target.classList.contains('crossed')) e.target.classList.remove('crossed');
     else e.target.classList.add('crossed');
+    if(checkEnd()) endGame('You won !');
     return false;
 }
 
 function restart() {
+    Cells = [];
     document.getElementById('game').innerHTML = '';
     width = parseInt(document.getElementById('width').value) || 1;
     height = parseInt(document.getElementById('height').value) || 1;

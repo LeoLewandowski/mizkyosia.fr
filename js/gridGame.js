@@ -29,9 +29,8 @@ function restartGame() {
     document.querySelectorAll('.gameCell').forEach(c => c.addEventListener('click', turn));
 }
 
-function endGame(arg,p){
+function endGame(txt){
     playSound('win');
-    player = p||player;
-    document.getElementById('winner').innerHTML = arg === true ? 'Game ended up in a draw !' : `Player ${player} (${arg}) has won !`;
+    document.getElementById('winner').innerHTML = txt;
     game.classList.add('finished');
 }

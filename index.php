@@ -13,12 +13,13 @@
         <h1>Hello</h1>
         <a><h2>Games</h2></a>
         <section class="projects flexibleGrid">
-            <a href="./games/tic-tac-toe/" class="borderGrad">Tic-tac-toe</a>
-            <a href="./games/pong/" class="borderGrad">Pong</a>
-            <a href="./games/connect-4/" class="borderGrad">Connect 4</a>
-            <a href="./games/minesweeper/" class="borderGrad">Minesweeper</a>
-            <a href="./games/snake/" class="borderGrad">Snake</a>
-            <a href="./games/nonogram/" class="borderGrad">Nonogram</a>
+            <?php
+                $dirs = array_filter(glob('./games/*'), 'is_dir');
+                foreach ($dirs as $dir) {
+                    $name = ucfirst(str_replace('-', ' ', preg_replace("/.+\//", '', $dir)));
+                    echo "<a href=\"$dir\" class=\"borderGrad\">$name</a>";
+                }
+            ?>
         </section>
         <a><h2>School Projects</h2></a>
         <section class="projects flexibleGrid">
